@@ -10,6 +10,9 @@ from .serializers import (CommentSerializer, FollowSerializer,
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Vieset для чтения данных.
+    """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = (IsAuthorOrReadOnly,)
@@ -62,7 +65,6 @@ class FollowViewSet(ListModelMixin, CreateModelMixin, viewsets.GenericViewSet):
      ViewSet для управления подписками.
     Создание, получение, обновление и удаление подписок пользователей.
     """
-    queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     permission_classes = (permissions.IsAuthenticated,)
     filter_backends = (filters.SearchFilter,)
